@@ -59,7 +59,8 @@
   </style>
   <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
   </style>
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
   <div class="scrollbar" id="bar">
@@ -381,9 +382,113 @@
           </header>
         
         <div class="entry-content">
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;limits.h&gt;</span><br><span class="line">#define INT_MAX 2147483647;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int coinchange(int coin, vector&lt;int&gt; &amp;coins, int amount, vector&lt;int&gt; &amp;bwl) </span><br><span class="line">&#123;</span><br><span class="line">    if (amount &lt; 0) return -1;</span><br><span class="line">    if (amount &#x3D;&#x3D; 0) return 0;</span><br><span class="line">    if (bwl[amount] !&#x3D; 0) return bwl[amount];</span><br><span class="line">    int res, i, j, dp &#x3D; 0, m;</span><br><span class="line">    m &#x3D; INT_MAX;</span><br><span class="line">    j &#x3D; 0;</span><br><span class="line">    res &#x3D; INT_MAX;</span><br><span class="line">    while (j &lt; coin) &#123;</span><br><span class="line">        i &#x3D; coins[j];</span><br><span class="line">        dp &#x3D; coinchange(coin, coins, amount - i, bwl);</span><br><span class="line">        if (dp &#x3D;&#x3D; -1) &#123;</span><br><span class="line">            j++;</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        if (res &gt; 1 + dp) &#123;</span><br><span class="line">            res &#x3D; 1 + dp;</span><br><span class="line">        &#125;</span><br><span class="line">        j++;</span><br><span class="line">    &#125;</span><br><span class="line">    if (res !&#x3D; m) &#123;</span><br><span class="line">        bwl[amount] &#x3D; res;</span><br><span class="line">    &#125;</span><br><span class="line">    else &#123;</span><br><span class="line">        bwl[amount] &#x3D; -1;</span><br><span class="line">    &#125;</span><br><span class="line">    return bwl[amount];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int coinChange(vector&lt;int&gt;&amp; coins, int amount) </span><br><span class="line">&#123;</span><br><span class="line">    int coin &#x3D; coins.size();</span><br><span class="line">    vector&lt;int&gt; bwl(amount + 1, 0);</span><br><span class="line">    return coinchange(coin, coins, amount, bwl);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main() </span><br><span class="line">&#123;</span><br><span class="line">    vector&lt;int&gt; coins;</span><br><span class="line">    int a, n, i &#x3D; 0, amount, m;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    coins.clear();</span><br><span class="line">    while (i &lt; n) &#123;</span><br><span class="line">        cin &gt;&gt; a;</span><br><span class="line">        coins.push_back(a);</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    cin &gt;&gt; amount;</span><br><span class="line">    m &#x3D; coinChange(coins, amount);</span><br><span class="line">    cout &lt;&lt; m;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          <pre class="line-numbers language-C/C++" data-language="C/C++"><code class="language-C/C++">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;limits.h&gt;
+#define INT_MAX 2147483647;
+using namespace std;
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;limits.h&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#define INT_MAX 2147483647;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int coinChange(vector&lt;int&gt; &amp;coins, int amount)</span><br><span class="line">&#123;</span><br><span class="line">    vector&lt;int&gt; dp(amount + 1, amount + 1);</span><br><span class="line">    dp[0] &#x3D; 0;</span><br><span class="line">    int i, j;</span><br><span class="line">    for (i &#x3D; 0; i &lt; dp.size(); i++) </span><br><span class="line">    &#123;</span><br><span class="line">        for (j &#x3D; 0; j &lt; coins.size(); j++)</span><br><span class="line">        &#123;</span><br><span class="line">            if (i &lt; coins[j])</span><br><span class="line">            &#123;</span><br><span class="line">                continue;</span><br><span class="line">            &#125;</span><br><span class="line">            if (dp[i] &gt; dp[i - coins[j]]) </span><br><span class="line">            &#123;</span><br><span class="line">                dp[i] &#x3D; 1 + dp[i - coins[j]];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return (dp[amount] &#x3D;&#x3D; amount + 1) ? -1 : dp[amount];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    vector&lt;int&gt; coins;</span><br><span class="line">    int a, n, i &#x3D; 0, amount, m;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    coins.clear();</span><br><span class="line">    while (i &lt; n)</span><br><span class="line">    &#123;</span><br><span class="line">        cin &gt;&gt; a;</span><br><span class="line">        coins.push_back(a);</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    cin &gt;&gt; amount;</span><br><span class="line">    m &#x3D; coinChange(coins, amount);</span><br><span class="line">    cout &lt;&lt; m;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+int coinchange(int coin, vector&lt;int&gt; &amp;coins, int amount, vector&lt;int&gt; &amp;bwl) 
+&#123;
+    if (amount &lt; 0) return -1;
+    if (amount &#x3D;&#x3D; 0) return 0;
+    if (bwl[amount] !&#x3D; 0) return bwl[amount];
+    int res, i, j, dp &#x3D; 0, m;
+    m &#x3D; INT_MAX;
+    j &#x3D; 0;
+    res &#x3D; INT_MAX;
+    while (j &lt; coin) &#123;
+        i &#x3D; coins[j];
+        dp &#x3D; coinchange(coin, coins, amount - i, bwl);
+        if (dp &#x3D;&#x3D; -1) &#123;
+            j++;
+            continue;
+        &#125;
+        if (res &gt; 1 + dp) &#123;
+            res &#x3D; 1 + dp;
+        &#125;
+        j++;
+    &#125;
+    if (res !&#x3D; m) &#123;
+        bwl[amount] &#x3D; res;
+    &#125;
+    else &#123;
+        bwl[amount] &#x3D; -1;
+    &#125;
+    return bwl[amount];
+&#125;
+
+int coinChange(vector&lt;int&gt;&amp; coins, int amount) 
+&#123;
+    int coin &#x3D; coins.size();
+    vector&lt;int&gt; bwl(amount + 1, 0);
+    return coinchange(coin, coins, amount, bwl);
+&#125;
+
+
+int main() 
+&#123;
+    vector&lt;int&gt; coins;
+    int a, n, i &#x3D; 0, amount, m;
+    cin &gt;&gt; n;
+    coins.clear();
+    while (i &lt; n) &#123;
+        cin &gt;&gt; a;
+        coins.push_back(a);
+        i++;
+    &#125;
+    cin &gt;&gt; amount;
+    m &#x3D; coinChange(coins, amount);
+    cout &lt;&lt; m;
+    return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-C/C++" data-language="C/C++"><code class="language-C/C++">#include &lt;iostream&gt;
+#include &lt;limits.h&gt;
+#include &lt;vector&gt;
+#define INT_MAX 2147483647;
+using namespace std;
+
+int coinChange(vector&lt;int&gt; &amp;coins, int amount)
+&#123;
+    vector&lt;int&gt; dp(amount + 1, amount + 1);
+    dp[0] &#x3D; 0;
+    int i, j;
+    for (i &#x3D; 0; i &lt; dp.size(); i++) 
+    &#123;
+        for (j &#x3D; 0; j &lt; coins.size(); j++)
+        &#123;
+            if (i &lt; coins[j])
+            &#123;
+                continue;
+            &#125;
+            if (dp[i] &gt; dp[i - coins[j]]) 
+            &#123;
+                dp[i] &#x3D; 1 + dp[i - coins[j]];
+            &#125;
+        &#125;
+    &#125;
+    return (dp[amount] &#x3D;&#x3D; amount + 1) ? -1 : dp[amount];
+&#125;
+
+int main()
+&#123;
+    vector&lt;int&gt; coins;
+    int a, n, i &#x3D; 0, amount, m;
+    cin &gt;&gt; n;
+    coins.clear();
+    while (i &lt; n)
+    &#123;
+        cin &gt;&gt; a;
+        coins.push_back(a);
+        i++;
+    &#125;
+    cin &gt;&gt; amount;
+    m &#x3D; coinChange(coins, amount);
+    cout &lt;&lt; m;
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -486,7 +591,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -498,10 +603,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',

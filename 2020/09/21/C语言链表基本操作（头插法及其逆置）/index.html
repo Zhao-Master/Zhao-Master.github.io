@@ -59,7 +59,8 @@
   </style>
   <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
   </style>
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
   <div class="scrollbar" id="bar">
@@ -381,7 +382,86 @@
           </header>
         
         <div class="entry-content">
-          <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line">#include &lt;malloc.h&gt;</span><br><span class="line"></span><br><span class="line">typedef struct Node</span><br><span class="line">&#123;</span><br><span class="line">    char data;</span><br><span class="line">	struct Node *next;</span><br><span class="line">&#125;SN;</span><br><span class="line"></span><br><span class="line">SN * create(int n)</span><br><span class="line">&#123;</span><br><span class="line">	int i;</span><br><span class="line">	SN *h,*p;</span><br><span class="line">    h &#x3D; NULL;</span><br><span class="line">    for(i &#x3D; 0; i&lt;n; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		p&#x3D;(SN*)malloc(sizeof(SN));</span><br><span class="line">		printf(&quot;请输入第%d个字符：&quot;,i+1);</span><br><span class="line">		p-&gt;data &#x3D; getchar();</span><br><span class="line">		fflush(stdin);</span><br><span class="line">		p-&gt;next &#x3D; h;</span><br><span class="line">		h&#x3D;p;</span><br><span class="line">	&#125;</span><br><span class="line">	return h;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">SN * def(SN * h)</span><br><span class="line">&#123; </span><br><span class="line">    SN * n1, *n2;</span><br><span class="line">	n1 &#x3D; h;</span><br><span class="line">	n2 &#x3D; NULL;</span><br><span class="line">	while(n1 !&#x3D; NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		SN *temp;</span><br><span class="line">		temp &#x3D; n1;</span><br><span class="line">		n1 &#x3D; n1-&gt;next;</span><br><span class="line">		temp-&gt;next &#x3D; n2;</span><br><span class="line">		n2 &#x3D; temp;</span><br><span class="line">	&#125;</span><br><span class="line">	h &#x3D; n2;</span><br><span class="line">	return h;</span><br><span class="line">&#125;</span><br><span class="line">void visit(SN * h)</span><br><span class="line">&#123; </span><br><span class="line">	while(h !&#x3D; NULL)</span><br><span class="line">	&#123;</span><br><span class="line">		printf(&quot;%c&quot;, h-&gt;data);</span><br><span class="line">		h &#x3D; h-&gt;next;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;\n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void freelist(SN *h)</span><br><span class="line">&#123;</span><br><span class="line">    SN *temp &#x3D; h;</span><br><span class="line">	SN *del;</span><br><span class="line">	while (temp !&#x3D; NULL) &#123;</span><br><span class="line">        del &#x3D; temp;</span><br><span class="line">        temp &#x3D; temp-&gt;next;</span><br><span class="line">        free(del);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() </span><br><span class="line">&#123;</span><br><span class="line">	int n;</span><br><span class="line">	SN *h;</span><br><span class="line">	printf(&quot;请输入字符个数：\n&quot;);</span><br><span class="line">	scanf(&quot;%d&quot;, &amp;n);</span><br><span class="line">	fflush(stdin);</span><br><span class="line">	h &#x3D; create(n);</span><br><span class="line">	printf(&quot;链表创建成功，对其遍历\n&quot;);</span><br><span class="line">    visit(h);</span><br><span class="line">	printf(&quot;链表逆置成功，对其遍历\n&quot;);</span><br><span class="line">	h &#x3D; def(h);</span><br><span class="line">	visit(h);</span><br><span class="line">	freelist(h);</span><br><span class="line">	return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          <pre class="line-numbers language-C/C++" data-language="C/C++"><code class="language-C/C++">#include &lt;stdio.h&gt;
+#include &lt;malloc.h&gt;
+
+typedef struct Node
+&#123;
+    char data;
+	struct Node *next;
+&#125;SN;
+
+SN * create(int n)
+&#123;
+	int i;
+	SN *h,*p;
+    h &#x3D; NULL;
+    for(i &#x3D; 0; i&lt;n; i++)
+	&#123;
+		p&#x3D;(SN*)malloc(sizeof(SN));
+		printf(&quot;请输入第%d个字符：&quot;,i+1);
+		p-&gt;data &#x3D; getchar();
+		fflush(stdin);
+		p-&gt;next &#x3D; h;
+		h&#x3D;p;
+	&#125;
+	return h;
+&#125;
+
+SN * def(SN * h)
+&#123; 
+    SN * n1, *n2;
+	n1 &#x3D; h;
+	n2 &#x3D; NULL;
+	while(n1 !&#x3D; NULL)
+	&#123;
+		SN *temp;
+		temp &#x3D; n1;
+		n1 &#x3D; n1-&gt;next;
+		temp-&gt;next &#x3D; n2;
+		n2 &#x3D; temp;
+	&#125;
+	h &#x3D; n2;
+	return h;
+&#125;
+void visit(SN * h)
+&#123; 
+	while(h !&#x3D; NULL)
+	&#123;
+		printf(&quot;%c&quot;, h-&gt;data);
+		h &#x3D; h-&gt;next;
+	&#125;
+	printf(&quot;\n&quot;);
+&#125;
+
+void freelist(SN *h)
+&#123;
+    SN *temp &#x3D; h;
+	SN *del;
+	while (temp !&#x3D; NULL) &#123;
+        del &#x3D; temp;
+        temp &#x3D; temp-&gt;next;
+        free(del);
+    &#125;
+&#125;
+
+int main() 
+&#123;
+	int n;
+	SN *h;
+	printf(&quot;请输入字符个数：\n&quot;);
+	scanf(&quot;%d&quot;, &amp;n);
+	fflush(stdin);
+	h &#x3D; create(n);
+	printf(&quot;链表创建成功，对其遍历\n&quot;);
+    visit(h);
+	printf(&quot;链表逆置成功，对其遍历\n&quot;);
+	h &#x3D; def(h);
+	visit(h);
+	freelist(h);
+	return 0;
+&#125;
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -484,7 +564,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -496,10 +576,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',

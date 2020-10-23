@@ -59,7 +59,8 @@
   </style>
   <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
   </style>
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
   <div class="scrollbar" id="bar">
@@ -381,7 +382,42 @@
           </header>
         
         <div class="entry-content">
-          <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="keyword">import</span> numpy<span class="comment">#导入两个库</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">knn</span>(<span class="params">c</span>):</span><span class="comment">#定义knn函数</span></span><br><span class="line">    k_a = <span class="number">0</span></span><br><span class="line">    k_b = <span class="number">0</span></span><br><span class="line">    distance_a = []<span class="comment">#定义a和c的距离列表</span></span><br><span class="line">    distance_b = []<span class="comment">#定义b和c的距离列表</span></span><br><span class="line">    distance = []<span class="comment">#所有数据距离列表</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(a)):<span class="comment">#a的每个数据和c的每个数据的距离</span></span><br><span class="line">        distance_a.append(math.sqrt(numpy.square(a[i][<span class="number">0</span>] - c[<span class="number">0</span>]) + numpy.square(a[i][<span class="number">1</span>] - c[<span class="number">1</span>])))</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, <span class="built_in">len</span>(b)):<span class="comment">#b的每个数据和c的每个数据的距离</span></span><br><span class="line">        distance_b.append(math.sqrt(numpy.square(b[i][<span class="number">0</span>] - c[<span class="number">0</span>]) + numpy.square(b[i][<span class="number">1</span>] - c[<span class="number">1</span>])))</span><br><span class="line">    distance = distance_a + distance_b</span><br><span class="line">    distance.sort()<span class="comment">#排序距离</span></span><br><span class="line">    k = <span class="built_in">int</span>(<span class="built_in">len</span>(distance) / <span class="number">2</span>) + <span class="number">1</span><span class="comment">#取k的值</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(k):</span><br><span class="line">        <span class="keyword">if</span> distance_a.count(distance[i]) != <span class="number">0</span>:<span class="comment">#判断该距离是否是a和c的距离</span></span><br><span class="line">            k_a = k_a + <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> distance_b.count(distance[i]) != <span class="number">0</span>:<span class="comment">#判断该距离是否是b和c的距离</span></span><br><span class="line">            k_b = k_b + <span class="number">1</span></span><br><span class="line">    <span class="keyword">if</span> k_a &gt; k_b:<span class="comment">#判断c的数据和哪个类别接近</span></span><br><span class="line">        print(<span class="string">&quot;你属于肥胖身材&quot;</span>)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        print(<span class="string">&quot;你属于标准身材&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">a = [[<span class="number">150</span>, <span class="number">60</span>], [<span class="number">152</span>, <span class="number">65</span>], [<span class="number">154</span>, <span class="number">68</span>], [<span class="number">156</span>, <span class="number">70</span>], [<span class="number">158</span>, <span class="number">72</span>]]<span class="comment">#类别a</span></span><br><span class="line">b = [[<span class="number">150</span>, <span class="number">49.5</span>], [<span class="number">152</span>, <span class="number">50.8</span>], [<span class="number">154</span>, <span class="number">52.2</span>], [<span class="number">156</span>, <span class="number">53.5</span>], [<span class="number">158</span>, <span class="number">54.9</span>]]<span class="comment">#类别b</span></span><br><span class="line">c = []  <span class="comment">#判断类别c</span></span><br><span class="line">print(<span class="string">&quot;输入身高体重&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>):<span class="comment">#输入c</span></span><br><span class="line">    num = <span class="built_in">int</span>(<span class="built_in">input</span>())</span><br><span class="line">    c.append(num)</span><br><span class="line">knn(c)<span class="comment">#调用函数knn</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          <pre class="line-numbers language-python" data-language="python"><code class="language-python">import math
+import numpy#导入两个库
+
+def knn(c):#定义knn函数
+    k_a &#x3D; 0
+    k_b &#x3D; 0
+    distance_a &#x3D; []#定义a和c的距离列表
+    distance_b &#x3D; []#定义b和c的距离列表
+    distance &#x3D; []#所有数据距离列表
+    for i in range(0, len(a)):#a的每个数据和c的每个数据的距离
+        distance_a.append(math.sqrt(numpy.square(a[i][0] - c[0]) + numpy.square(a[i][1] - c[1])))
+    for i in range(0, len(b)):#b的每个数据和c的每个数据的距离
+        distance_b.append(math.sqrt(numpy.square(b[i][0] - c[0]) + numpy.square(b[i][1] - c[1])))
+    distance &#x3D; distance_a + distance_b
+    distance.sort()#排序距离
+    k &#x3D; int(len(distance) &#x2F; 2) + 1#取k的值
+    for i in range(k):
+        if distance_a.count(distance[i]) !&#x3D; 0:#判断该距离是否是a和c的距离
+            k_a &#x3D; k_a + 1
+        if distance_b.count(distance[i]) !&#x3D; 0:#判断该距离是否是b和c的距离
+            k_b &#x3D; k_b + 1
+    if k_a &gt; k_b:#判断c的数据和哪个类别接近
+        print(&quot;你属于肥胖身材&quot;)
+    else:
+        print(&quot;你属于标准身材&quot;)
+
+
+a &#x3D; [[150, 60], [152, 65], [154, 68], [156, 70], [158, 72]]#类别a
+b &#x3D; [[150, 49.5], [152, 50.8], [154, 52.2], [156, 53.5], [158, 54.9]]#类别b
+c &#x3D; []  #判断类别c
+print(&quot;输入身高体重&quot;)
+for i in range(2):#输入c
+    num &#x3D; int(input())
+    c.append(num)
+knn(c)#调用函数knn
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -484,7 +520,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -496,10 +532,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',

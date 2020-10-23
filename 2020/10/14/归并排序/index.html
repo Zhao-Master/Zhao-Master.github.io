@@ -59,7 +59,8 @@
   </style>
   <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
   </style>
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
   <div class="scrollbar" id="bar">
@@ -385,12 +386,68 @@
 <p>归并算法都基于归并这个简单的操作，即将两个有序的数组归并成一个更大的有序数组。很快人们就根据这个操作发明了一种简单的递归排序算法：归并排序。要将一个数组排序，可以先（递归地）将它分成两半分别排序，然后将结果归并起来：你将会看到，归并排序最<br>吸引人的性质是它能够保证将任意长度为，的数组排序所需时间和，成正比；它的主要缺点则是它所需的额外空间。简单的归并排序如图所示。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/ZSakuraTears/cdn/img/FoxitPhantom_6xnNTxUAow.png" alt="图"></p>
 <h4 id="原地归并"><a href="#原地归并" class="headerlink" title="原地归并"></a>原地归并</h4><p>先创建一个数组aux将a的元素全部赋给aux。然后开始将两个有序的数组归并成一个有序的数组。<br>将a[lo, mid]和a[mid + 1, hi]两个有序数组归并为一个有序数组<br><img src="https://cdn.jsdelivr.net/gh/ZSakuraTears/cdn/img/FoxitPhantom_1FWin67kuQ.png" alt="图"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">void merge(int a[], int lo, int mid, int hi)</span><br><span class="line">&#123;</span><br><span class="line">    int i, j;</span><br><span class="line">    i &#x3D; lo;</span><br><span class="line">    j &#x3D; mid + 1;</span><br><span class="line">    int aux[hi + 1];</span><br><span class="line">    for (int k &#x3D; lo; k &lt;&#x3D; hi; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        aux[k] &#x3D; a[k];</span><br><span class="line">    &#125;</span><br><span class="line">    for (int k &#x3D; lo; k &lt;&#x3D; hi; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        if (i &gt; mid)</span><br><span class="line">        &#123;</span><br><span class="line">            a[k] &#x3D; aux[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        else if (j &gt; hi)</span><br><span class="line">        &#123;</span><br><span class="line">            a[k] &#x3D; aux[i++];</span><br><span class="line">        &#125;</span><br><span class="line">        else if (aux[j] &lt; aux[i])</span><br><span class="line">        &#123;</span><br><span class="line">            a[k] &#x3D; aux[j++];</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            a[k] &#x3D; aux[i++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-C/C++" data-language="C/C++"><code class="language-C/C++">void merge(int a[], int lo, int mid, int hi)
+&#123;
+    int i, j;
+    i &#x3D; lo;
+    j &#x3D; mid + 1;
+    int aux[hi + 1];
+    for (int k &#x3D; lo; k &lt;&#x3D; hi; k++)
+    &#123;
+        aux[k] &#x3D; a[k];
+    &#125;
+    for (int k &#x3D; lo; k &lt;&#x3D; hi; k++)
+    &#123;
+        if (i &gt; mid)
+        &#123;
+            a[k] &#x3D; aux[j++];
+        &#125;
+        else if (j &gt; hi)
+        &#123;
+            a[k] &#x3D; aux[i++];
+        &#125;
+        else if (aux[j] &lt; aux[i])
+        &#123;
+            a[k] &#x3D; aux[j++];
+        &#125;
+        else
+        &#123;
+            a[k] &#x3D; aux[i++];
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>当左边（mid为中界）元素已经全部赋值到a中时，则不需要再考虑左边元素，直接把右边剩余元素全部赋值给a即可  if(i &gt; mid)<br>当右边（mid为中界）元素已经全部赋值到a中时，则不需要再考虑右边元素，直接把左边剩余元素全部赋值给a即可  if(j &gt; hi)<br>如果右边当前元素小于左边当前元素则将右边当前元素赋给a,(aux[j] &lt; aux[i])<br>右边当前元素大于等于左边当前元素，最后一个else</p>
 <h4 id="自上向下"><a href="#自上向下" class="headerlink" title="自上向下"></a>自上向下</h4><p>自顶向下归并将一个数组先中间拆分，再把拆分的数组拆分，直到只有一个元素的数组，然后将每两个数组就行归并。最后归并为一个有序数组。<br><img src="https://cdn.jsdelivr.net/gh/ZSakuraTears/cdn/img/FoxitPhantom_pNM5lWqMZA.png" alt="图"><br><img src="https://cdn.jsdelivr.net/gh/ZSakuraTears/cdn/img/FoxitPhantom_VlHXNLFh2k.png" alt="图"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">void gbsort(int a[], int lo, int hi)</span><br><span class="line">&#123;</span><br><span class="line">    if (hi &lt;&#x3D; lo)</span><br><span class="line">    &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    int mid;</span><br><span class="line">    mid &#x3D; lo + (hi - lo) &#x2F; 2;</span><br><span class="line">    gbsort(a, lo, mid);</span><br><span class="line">    gbsort(a, mid + 1, hi);</span><br><span class="line">    merge(a, lo, mid, hi);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-C/C++" data-language="C/C++"><code class="language-C/C++">void gbsort(int a[], int lo, int hi)
+&#123;
+    if (hi &lt;&#x3D; lo)
+    &#123;
+        return;
+    &#125;
+    int mid;
+    mid &#x3D; lo + (hi - lo) &#x2F; 2;
+    gbsort(a, lo, mid);
+    gbsort(a, mid + 1, hi);
+    merge(a, lo, mid, hi);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="自底向上"><a href="#自底向上" class="headerlink" title="自底向上"></a>自底向上</h4><p>自底向上归并第一次每两个元素的数组归并，然后每四个，八个……归并，最终归并成一个有序数组<br><img src="https://cdn.jsdelivr.net/gh/ZSakuraTears/cdn/img/FoxitPhantom_3ixOLZEZqD.png" alt="图"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void gbsort(int a[], int lo, int hi)</span><br><span class="line">&#123;</span><br><span class="line">    int n &#x3D; hi + 1; &#x2F;&#x2F;n为数组长度</span><br><span class="line">    for (int i &#x3D; 1; i &lt; n; i +&#x3D; i)&#x2F;&#x2F;每次循环完了归并前一次翻倍的数组元素个数</span><br><span class="line">    &#123;</span><br><span class="line">        for (int j &#x3D; 0; j &lt; n - i; j +&#x3D; i * 2)</span><br><span class="line">        &#123;</span><br><span class="line">            if (j + i * 2 - 1 &lt; hi)</span><br><span class="line">            &#123;</span><br><span class="line">                merge(a, j, j + i - 1, j + i * 2 - 1);</span><br><span class="line">            &#125;</span><br><span class="line">            else &#123;</span><br><span class="line">                merge(a, j, j + i - 1, hi);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c/c++" data-language="c/c++"><code class="language-c/c++">void gbsort(int a[], int lo, int hi)
+&#123;
+    int n &#x3D; hi + 1; &#x2F;&#x2F;n为数组长度
+    for (int i &#x3D; 1; i &lt; n; i +&#x3D; i)&#x2F;&#x2F;每次循环完了归并前一次翻倍的数组元素个数
+    &#123;
+        for (int j &#x3D; 0; j &lt; n - i; j +&#x3D; i * 2)
+        &#123;
+            if (j + i * 2 - 1 &lt; hi)
+            &#123;
+                merge(a, j, j + i - 1, j + i * 2 - 1);
+            &#125;
+            else &#123;
+                merge(a, j, j + i - 1, hi);
+            &#125;
+        &#125;
+    &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -493,7 +550,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -505,10 +562,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',

@@ -59,7 +59,8 @@
   </style>
   <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
   </style>
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
   <div class="scrollbar" id="bar">
@@ -388,7 +389,36 @@
 <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>【数据范围】<br>对于 100% 的数据,−20≤R≤−2,∣n∣≤37336。</p>
 <p>NOIp2000提高组第一题</p>
 <h3 id="题解："><a href="#题解：" class="headerlink" title="题解："></a>题解：</h3><p>正常情况下-7 % -2 商4 余1<br>但是C语言（或者说所有语言）这里是商3 余-1<br>这就很明显了，只需要把商+1，被除数+1就和正常计算情况一样了</p>
-<h4 id="代码为："><a href="#代码为：" class="headerlink" title="代码为："></a>代码为：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">void zh(int a, int b)</span><br><span class="line">&#123;</span><br><span class="line">    if (a &#x3D;&#x3D; 0) &#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    int m &#x3D; a % b;</span><br><span class="line">    if (m &lt; 0) &#123;</span><br><span class="line">        m -&#x3D; b;</span><br><span class="line">        a +&#x3D; b;</span><br><span class="line">    &#125;</span><br><span class="line">    if (m &gt; 9) &#123;</span><br><span class="line">        m &#x3D; &#39;A&#39; + m - 10;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">        m +&#x3D; &#39;0&#39;;</span><br><span class="line">    zh(a &#x2F; b, b);</span><br><span class="line">    printf(&quot;%c&quot;, m);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int a, b;</span><br><span class="line">    scanf(&quot;%d%d&quot;, &amp;a, &amp;b);</span><br><span class="line">    printf(&quot;%d&#x3D;&quot;, a);</span><br><span class="line">    zh(a, b);</span><br><span class="line">    printf(&quot;(base%d)&quot;, b);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="代码为："><a href="#代码为：" class="headerlink" title="代码为："></a>代码为：</h4><pre class="line-numbers language-C/C++" data-language="C/C++"><code class="language-C/C++">#include &lt;stdio.h&gt;
+
+void zh(int a, int b)
+&#123;
+    if (a &#x3D;&#x3D; 0) &#123;
+        return;
+    &#125;
+    int m &#x3D; a % b;
+    if (m &lt; 0) &#123;
+        m -&#x3D; b;
+        a +&#x3D; b;
+    &#125;
+    if (m &gt; 9) &#123;
+        m &#x3D; &#39;A&#39; + m - 10;
+    &#125;
+    else
+        m +&#x3D; &#39;0&#39;;
+    zh(a &#x2F; b, b);
+    printf(&quot;%c&quot;, m);
+&#125;
+
+int main()
+&#123;
+    int a, b;
+    scanf(&quot;%d%d&quot;, &amp;a, &amp;b);
+    printf(&quot;%d&#x3D;&quot;, a);
+    zh(a, b);
+    printf(&quot;(base%d)&quot;, b);
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -491,7 +521,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -503,10 +533,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',

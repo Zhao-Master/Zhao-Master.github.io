@@ -59,7 +59,8 @@
   </style>
   <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
   </style>
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
   <div class="scrollbar" id="bar">
@@ -382,7 +383,39 @@
         
         <div class="entry-content">
           <p>快速排序的特点是他是原地排序（只需要一个很小的辅助栈），且长度为N的数组时间复杂度为NlgN。<br>快速排序是一种分治的算法，他将一个数组分成两个数组，将两部分独立排序，在快排中切分的位置取决于数组的内容。<br>取首元素为切分元素，比切分元素小的放到左边，比切分元素大的放到右边，再把两个数组切分，最后有序<br><img src="https://cdn.jsdelivr.net/gh/ZSakuraTears/cdn/img/QQ%E5%9B%BE%E7%89%8720201015164728.jpg" alt="图"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">void qsort(int a[], int lo, int hi)</span><br><span class="line">&#123;</span><br><span class="line">    if (lo &gt;&#x3D; hi)</span><br><span class="line">        return;</span><br><span class="line">    int i, j, m, temp, mid;</span><br><span class="line">    m &#x3D; a[lo]; &#x2F;&#x2F;切分元素</span><br><span class="line">    i &#x3D; lo; &#x2F;&#x2F;下面循环时i和j就会先自增&#x2F;自减1再判断，所以i为头元素，j为尾元素 - 1</span><br><span class="line">    j &#x3D; hi + 1;</span><br><span class="line">    while (true)</span><br><span class="line">    &#123;</span><br><span class="line">        while (a[++i] &lt; m)</span><br><span class="line">        &#123;</span><br><span class="line">            if (i &#x3D;&#x3D; hi)&#x2F;&#x2F;直到循环到右边界也没有找到比切分元素大的元素</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        while (a[--j] &gt; m)</span><br><span class="line">        &#123;</span><br><span class="line">            if (j &#x3D;&#x3D; lo)&#x2F;&#x2F;直到循环到左边界也没有找到比切分元素小的元素</span><br><span class="line">                break;</span><br><span class="line">        &#125;</span><br><span class="line">        if (i &gt;&#x3D; j)&#x2F;&#x2F;当i的位置在j的右边，a[i] &gt; a[j],不可以交换</span><br><span class="line">            break;</span><br><span class="line">        int temp &#x3D; a[i];</span><br><span class="line">        a[i] &#x3D; a[j];</span><br><span class="line">        a[j] &#x3D; temp;</span><br><span class="line">    &#125;</span><br><span class="line">    temp &#x3D; a[lo];</span><br><span class="line">    a[lo] &#x3D; a[j];</span><br><span class="line">    a[j] &#x3D; temp;</span><br><span class="line">    mid &#x3D; j;</span><br><span class="line">    qsort(a, lo, mid - 1);</span><br><span class="line">    qsort(a, mid + 1, hi);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-C/C++" data-language="C/C++"><code class="language-C/C++">void qsort(int a[], int lo, int hi)
+&#123;
+    if (lo &gt;&#x3D; hi)
+        return;
+    int i, j, m, temp, mid;
+    m &#x3D; a[lo]; &#x2F;&#x2F;切分元素
+    i &#x3D; lo; &#x2F;&#x2F;下面循环时i和j就会先自增&#x2F;自减1再判断，所以i为头元素，j为尾元素 - 1
+    j &#x3D; hi + 1;
+    while (true)
+    &#123;
+        while (a[++i] &lt; m)
+        &#123;
+            if (i &#x3D;&#x3D; hi)&#x2F;&#x2F;直到循环到右边界也没有找到比切分元素大的元素
+                break;
+        &#125;
+        while (a[--j] &gt; m)
+        &#123;
+            if (j &#x3D;&#x3D; lo)&#x2F;&#x2F;直到循环到左边界也没有找到比切分元素小的元素
+                break;
+        &#125;
+        if (i &gt;&#x3D; j)&#x2F;&#x2F;当i的位置在j的右边，a[i] &gt; a[j],不可以交换
+            break;
+        int temp &#x3D; a[i];
+        a[i] &#x3D; a[j];
+        a[j] &#x3D; temp;
+    &#125;
+    temp &#x3D; a[lo];
+    a[lo] &#x3D; a[j];
+    a[j] &#x3D; temp;
+    mid &#x3D; j;
+    qsort(a, lo, mid - 1);
+    qsort(a, mid + 1, hi);
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -485,7 +518,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -497,10 +530,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',

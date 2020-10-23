@@ -59,7 +59,8 @@
   </style>
   <style type="text/css">.site-top .lower nav{display:block !important;}.author-profile i,.post-like a,.post-share .show-share,.sub-text,.we-info a,span.sitename,.post-more i:hover,#pagination a:hover,.post-content a:hover,.float-content i:hover{color:#FE9600}.feature i,.download,.navigator i:hover,.links ul li:before,.ar-time i,span.ar-circle,.object,.comment .comment-reply-link,.siren-checkbox-radio:checked + .siren-checkbox-radioInput:after{background:#FE9600}::-webkit-scrollbar-thumb{background:#FE9600}.download,.navigator i:hover,.link-title,.links ul li:hover,#pagination a:hover,.comment-respond input[type='submit']:hover{border-color:#FE9600}.entry-content a:hover,.site-info a:hover,.comment h4 a,#comments-navi a.prev,#comments-navi a.next,.comment h4 a:hover,.site-top ul li a:hover,.entry-title a:hover,#archives-temp h3,span.page-numbers.current,.sorry li a:hover,.site-title a:hover,i.iconfont.js-toggle-search.iconsearch:hover,.comment-respond input[type='submit']:hover{color:#FE9600}.comments .comments-main{display:block !important;}.comments .comments-hidden{display:none !important;}background-position:center center;background-attachment:inherit;}
   </style>
-<meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.2.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
   <div class="scrollbar" id="bar">
@@ -381,9 +382,104 @@
           </header>
         
         <div class="entry-content">
-          <h4 id="备忘录算法"><a href="#备忘录算法" class="headerlink" title="备忘录算法"></a>备忘录算法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int helper(vector&lt;int&gt; &amp;m, int n);</span><br><span class="line">int fib(int n);</span><br><span class="line"></span><br><span class="line">int fib(int n)</span><br><span class="line">&#123;</span><br><span class="line">    if(n &lt; 1)</span><br><span class="line">    &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;int&gt; m(n + 1, 0);</span><br><span class="line">    return helper(m, n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int helper(vector&lt;int&gt;&amp;m, int n)</span><br><span class="line">&#123;</span><br><span class="line">    if(n &#x3D;&#x3D; 1 || n &#x3D;&#x3D; 2) </span><br><span class="line">    &#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    if (m[n] !&#x3D; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        return m[n];</span><br><span class="line">    &#125;</span><br><span class="line">    m[n] &#x3D; helper(m, n - 1) + helper(m, n - 2);</span><br><span class="line">    return m[n];</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    cout &lt;&lt; fib(n);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="dp数组迭代"><a href="#dp数组迭代" class="headerlink" title="dp数组迭代"></a>dp数组迭代</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int fib(int n);</span><br><span class="line"></span><br><span class="line">int fib(int n)</span><br><span class="line">&#123;</span><br><span class="line">    if(n &lt; 1)</span><br><span class="line">    &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;int&gt; dp(n + 1, 0);</span><br><span class="line">    dp[1] &#x3D; dp[2] &#x3D; 1;</span><br><span class="line">    for (int i &#x3D; 3; i &lt;&#x3D; n; i++) </span><br><span class="line">    &#123;</span><br><span class="line">        dp[i] &#x3D; dp[i - 1] + dp[i - 2];</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[n];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    cout &lt;&lt; fib(n);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="空间优化"><a href="#空间优化" class="headerlink" title="空间优化"></a>空间优化</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int fib(int n);</span><br><span class="line"></span><br><span class="line">int fib(int n)</span><br><span class="line">&#123;</span><br><span class="line">    if (n &#x3D;&#x3D; 1 || n &#x3D;&#x3D; 2)</span><br><span class="line">    &#123;</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    int a, b, sum;</span><br><span class="line">    a &#x3D; b &#x3D; 1;</span><br><span class="line">    for (int i &#x3D; 3; i &lt;&#x3D; n; i++) </span><br><span class="line">    &#123;</span><br><span class="line">        sum &#x3D; a + b;</span><br><span class="line">        a &#x3D; b;</span><br><span class="line">        b &#x3D; sum;</span><br><span class="line">    &#125;</span><br><span class="line">    return sum;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    cout &lt;&lt; fib(n);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h4 id="备忘录算法"><a href="#备忘录算法" class="headerlink" title="备忘录算法"></a>备忘录算法</h4><pre class="line-numbers language-C/C++" data-language="C/C++"><code class="language-C/C++">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+
+int helper(vector&lt;int&gt; &amp;m, int n);
+int fib(int n);
+
+int fib(int n)
+&#123;
+    if(n &lt; 1)
+    &#123;
+        return 0;
+    &#125;
+    vector&lt;int&gt; m(n + 1, 0);
+    return helper(m, n);
+&#125;
+
+int helper(vector&lt;int&gt;&amp;m, int n)
+&#123;
+    if(n &#x3D;&#x3D; 1 || n &#x3D;&#x3D; 2) 
+    &#123;
+        return 1;
+    &#125;
+    if (m[n] !&#x3D; 0)
+    &#123;
+        return m[n];
+    &#125;
+    m[n] &#x3D; helper(m, n - 1) + helper(m, n - 2);
+    return m[n];
+&#125; 
+
+int main()
+&#123;
+    int n;
+    cin &gt;&gt; n;
+    cout &lt;&lt; fib(n);
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="dp数组迭代"><a href="#dp数组迭代" class="headerlink" title="dp数组迭代"></a>dp数组迭代</h4><pre class="line-numbers language-C/C++" data-language="C/C++"><code class="language-C/C++">#include &lt;iostream&gt;
+#include &lt;vector&gt;
+
+using namespace std;
+
+int fib(int n);
+
+int fib(int n)
+&#123;
+    if(n &lt; 1)
+    &#123;
+        return 0;
+    &#125;
+    vector&lt;int&gt; dp(n + 1, 0);
+    dp[1] &#x3D; dp[2] &#x3D; 1;
+    for (int i &#x3D; 3; i &lt;&#x3D; n; i++) 
+    &#123;
+        dp[i] &#x3D; dp[i - 1] + dp[i - 2];
+    &#125;
+    return dp[n];
+&#125;
+
+int main()
+&#123;
+    int n;
+    cin &gt;&gt; n;
+    cout &lt;&lt; fib(n);
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="空间优化"><a href="#空间优化" class="headerlink" title="空间优化"></a>空间优化</h4><pre class="line-numbers language-C/c++" data-language="C/c++"><code class="language-C/c++">#include &lt;iostream&gt;
+
+using namespace std;
+
+int fib(int n);
+
+int fib(int n)
+&#123;
+    if (n &#x3D;&#x3D; 1 || n &#x3D;&#x3D; 2)
+    &#123;
+        return 1;
+    &#125;
+    int a, b, sum;
+    a &#x3D; b &#x3D; 1;
+    for (int i &#x3D; 3; i &lt;&#x3D; n; i++) 
+    &#123;
+        sum &#x3D; a + b;
+        a &#x3D; b;
+        b &#x3D; sum;
+    &#125;
+    return sum;
+&#125;
+
+int main()
+&#123;
+    int n;
+    cin &gt;&gt; n;
+    cout &lt;&lt; fib(n);
+    return 0;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -486,7 +582,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -498,10 +594,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
